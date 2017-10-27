@@ -1,0 +1,50 @@
+﻿@model PreOTAS.Models.Subject
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Subject</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SubName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Elective)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Elective)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DEPT.DeptName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DEPT.DeptName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.SubCode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<PreOTAS.Models.SubComb>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Subject Combinations</title>
+</head>
+<body onload="window.print()">
+    <h1>OTAS</h1>
+    <hr />
+    <table border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Section)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Elective)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DEPT.DeptName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject.SubName)
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Section)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Elective)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DEPT.DeptName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.SubName)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

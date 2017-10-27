@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="24aa907fd38948edac531d51a5386ca4" Name="Diagram1">
+        <EntityTypeShape EntityType="RNSITModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RNSITModel.ABCD" Width="1.5" PointX="7.75" PointY="3.75" />
+        <EntityTypeShape EntityType="RNSITModel.Admin" Width="1.5" PointX="3" PointY="13.875" />
+        <EntityTypeShape EntityType="RNSITModel.AspNetRole" Width="1.5" PointX="0.75" PointY="2.5" />
+        <EntityTypeShape EntityType="RNSITModel.AspNetUserClaim" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="RNSITModel.AspNetUserLogin" Width="1.5" PointX="5.25" PointY="3.75" />
+        <EntityTypeShape EntityType="RNSITModel.AspNetUser" Width="1.5" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="RNSITModel.DEPT" Width="1.5" PointX="0.75" PointY="13.875" />
+        <EntityTypeShape EntityType="RNSITModel.NEW_RID_TABLE" Width="1.5" PointX="8.25" PointY="8.625" />
+        <EntityTypeShape EntityType="RNSITModel.NewElectivesTable" Width="1.5" PointX="5.25" PointY="12.5" />
+        <EntityTypeShape EntityType="RNSITModel.STUDENT" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="RNSITModel.SubComb" Width="1.5" PointX="5.25" PointY="18.5" />
+        <EntityTypeShape EntityType="RNSITModel.Subject" Width="1.5" PointX="3" PointY="16.625" />
+        <EntityTypeShape EntityType="RNSITModel.Suggestion" Width="1.5" PointX="5.25" PointY="15.375" />
+        <EntityTypeShape EntityType="RNSITModel.sysdiagram" Width="1.5" PointX="9.75" PointY="0.75" />
+        <EntityTypeShape EntityType="RNSITModel.Teacher" Width="1.5" PointX="3" PointY="24.625" />
+        <EntityTypeShape EntityType="RNSITModel.Valid" Width="1.5" PointX="5.25" PointY="8" />
+        <EntityTypeShape EntityType="RNSITModel.GivenNotGiven" Width="1.5" PointX="9.75" PointY="3.75" />
+        <EntityTypeShape EntityType="RNSITModel.LowerTable" Width="1.5" PointX="10.75" PointY="6.75" />
+        <AssociationConnector Association="RNSITModel.FK_Admin_DEPT" />
+        <AssociationConnector Association="RNSITModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RNSITModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <AssociationConnector Association="RNSITModel.FK_STUDENT_DEPT" />
+        <AssociationConnector Association="RNSITModel.FK_SubComb_DEPT1" />
+        <AssociationConnector Association="RNSITModel.FK_Subject_DEPT" />
+        <AssociationConnector Association="RNSITModel.FK_Teacher_DEPT" />
+        <AssociationConnector Association="RNSITModel.FK__NEW_RID_TAB__RID__438BFA74" />
+        <AssociationConnector Association="RNSITModel.FK__NEW_RID_TAB__USN__44801EAD" />
+        <AssociationConnector Association="RNSITModel.FK__NewElecti__SubCo__02284B6B" />
+        <AssociationConnector Association="RNSITModel.FK__NewElective__USN__01342732" />
+        <AssociationConnector Association="RNSITModel.FK__Suggestions__USN__1DD065E0" />
+        <AssociationConnector Association="RNSITModel.FK_ValidS_STUDENT" />
+        <AssociationConnector Association="RNSITModel.FK_SubComb_Teacher1" />
+        <AssociationConnector Association="RNSITModel.FK_Subject_Subcode" />
+        <AssociationConnector Association="RNSITModel.AspNetUserRoles" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

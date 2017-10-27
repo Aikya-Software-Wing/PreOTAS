@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PreOTAS.Models.Subject>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.SubCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SubName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Elective)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DEPT.DeptName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SubName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Elective)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DEPT.DeptName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.SubCode }) |
+            @Html.ActionLink("Details", "Details", new { id=item.SubCode }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.SubCode })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,50 @@
+﻿@model IEnumerable<PreOTAS.Models.GetTeacherDetailsByUSN_Result>
+
+@{
+    ViewBag.Title = "StudentDetailsFirstPage";
+}
+<style>
+    td {
+        min-height: 20px;
+    }
+</style>
+<h2>Class Teacher Details</h2>
+<br />
+@if (Model != null)
+{
+    <table style="width:100%;line-height:40px;">
+        <tr>
+            <th><b>Subject Code</b></th>
+            <th><b>Subject Name</b></th>
+            <th><b>Teacher name</b></th>
+            <th><b>Elective</b></th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(m => item.SubCode)</td>
+
+                <td>@Html.DisplayFor(m => item.SubName)</td>
+
+                <td>@Html.DisplayFor(m => item.TeacherName)</td>
+
+
+                @if (item.Elective == true)
+                {
+                    <td>True</td>
+                }
+                else
+                {
+                    <td>False</td>
+                }
+
+            </tr>
+        }
+    </table>
+}
+<br />
+@using (Html.BeginForm("ViewClassDetails", "AddTeacher", FormMethod.Get))
+{
+    <input type="submit" value="Back" class="btn btn-primary" />
+}
+

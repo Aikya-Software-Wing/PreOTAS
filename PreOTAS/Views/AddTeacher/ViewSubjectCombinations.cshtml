@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PreOTAS.Models.SubComb>
+
+@{
+    ViewBag.Title = "ViewSubjectCombinations";
+}
+
+<h2>View Subject Combinations</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Section)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DEPT.DeptName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Teacher.TeacherName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subject.SubName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Section)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DEPT.DeptName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Teacher.TeacherName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subject.SubName)
+        </td>
+    </tr>
+}
+
+</table>

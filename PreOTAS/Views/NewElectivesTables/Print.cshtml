@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PreOTAS.Models.NewElectivesTable>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Electives</title>
+</head>
+<body onload="window.print()">
+    <h1>OTAS</h1>
+    <hr />
+    <table border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject.SubName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.STUDENT.NAME)
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject.SubName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.STUDENT.NAME)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

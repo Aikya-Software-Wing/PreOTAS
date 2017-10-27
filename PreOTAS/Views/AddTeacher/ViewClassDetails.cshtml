@@ -1,0 +1,67 @@
+﻿<h2>View Class Details</h2>
+
+<br />
+@Html.ValidationSummary(true)
+<br />
+@using (Html.BeginForm())
+{
+    <table style="width:100%;" align="center">
+        <tr>
+            <td>
+                <label for="Sem">Semester</label>
+
+            </td>
+            <td>
+                <select id="Sem" name="Semester" class="form-control"></select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="Sec">Section</label>
+            </td>
+            <td>
+                <select id="Sec" name="Section" class="form-control"></select>
+            </td>
+        </tr>
+    </table>
+
+
+    <br /><br />
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Submit" class="btn btn-primary" />
+        </div>
+    </div>
+}
+
+@section scripts {
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON("/AddTeacher/SemesterList", function (data) {
+                var items = "<option>Select Semester</option>";
+                $.each(data, function (i, country) {
+                    items += "<option value='" + country.Value + "'>" + country.Text + "</option>";
+                });
+                $("#Sem").html(items);
+            });
+
+            $("#Sem").change(function () {
+                if ($("#Sem").val() != null) {
+                    var Sem =  $("#Sem :selected").val();
+                    var man = {
+                        "Sem": Sem
+                    };
+                    $.get("/AddTeacher/SectionList", man, function (data) {
+                        var items = [];
+                        items.push("<option value=" + 0 + ">" + "Select Section" + "</option>"); //first item
+                        for (var i = 0; i < data.length; i++) {
+                            items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                        }                                         //all data from the team table push into array
+                        $("#Sec").html(items.join(' '));
+                    });
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,349 @@
+﻿@model PreOTAS.Models.IndexVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center">Addition Of Subject</h2>
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+@*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+@{
+    ViewBag.Title = "Index";
+    List<SelectListItem> el = new List<SelectListItem>();
+    el.Add(new SelectListItem { Text = "NO", Value = "0" });
+    el.Add(new SelectListItem { Text = "Yes", Value = "1" });
+}
+
+
+<script src="~/Scripts/jquery.validate.min.js"></script>
+
+<script src="~/Scripts/modernizr-2.6.2.js"></script>
+<script src="~/Scripts/jquery-2.1.4.min.js"></script>
+<style type="text/css">
+    .table td , th{
+        text-align: center;
+        vertical-align: middle;
+    }
+</style>
+
+
+@Html.ValidationSummary(true)
+<div class="container">
+    <div class="row">
+        <form method="post" action="/AddTeacher/Index" class="form-horizontal">
+
+
+            <div class="col-lg-6">
+                <div class="list-group">
+                    <div class="form-group">
+
+                        <label class="control-label col-sm-3">Branch:</label>
+                            @Html.DropDownListFor(m => m.Deptlist, Model.DepartmentList, htmlAttributes: new { @class = "form-control" })
+                     </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3" > Semeseter:</label> 
+                        @Html.DropDownListFor(m => m.Sem, Model.Semester, "Select Semester", htmlAttributes: new{@class ="form-control"})
+                        </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"> Section:</label>
+                           @Html.DropDownListFor(m => m.sec, Model.SectionList, "Select Section", htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Teacher's Department</label>
+                            @Html.DropDownListFor(m => m.Tdept, Model.TeacherDetail, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3">Subject's Department</label>
+                            @Html.DropDownListFor(m => m.SDept, Model.SubjectDeptList, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-sm-3"> Teacher's Name</label>
+                           @Html.DropDownListFor(m => m.TID, Model.TeacherList, "Select Teacher", htmlAttributes: new { @class = "form-control" })
+                    </div>
+                    <div class="form-group">
+
+                        <label class="control-label col-sm-3">Subject's Name</label>
+                            @Html.DropDownListFor(m => m.subcode, Model.SubjectList, "Select Subject Name", htmlAttributes: new { @class = "form-control" })
+                        <div id="SUB">
+                            @if (Model.subcode != null) 
+                            { 
+                                     
+                            }
+                            </div>
+                    </div>
+                    
+                   
+                    <div class="form-group" style="text-align:center">
+                       
+                            <input type="submit" id="sub" value="SUBMIT" class="btn btn-primary">
+                    </div>
+                </div>
+            </div>
+
+
+        </form>
+    
+        @if (Model.ListofIndex.Count != 0) { 
+            <div class="col-lg-6">
+             @{
+                    int t = 0;
+              }
+                <table border="1" class="table table-hover table-bordered" style="border-color: black;">
+
+    <tr>
+        <th>Suject Name </th>
+        <th>Subcode</th>
+        <th>Teacher Name</th>
+        <th colspan="2">Action</th>
+                </tr>
+
+
+
+
+                @foreach (var i in Model.ListofIndex)
+                {
+                    <tr>
+                        <td>   @i.SubjectName </td>
+                        <td>   @i.subcode </td>
+                        <td>   @i.TeacherName </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { edit = t })
+                        </td>
+                        <td>
+                            @Html.ActionLink("Delete", "Delete", new { del = t })
+                        </td>
+                    </tr>
+                    t = t + 1;
+
+                }
+
+            </table>
+                <div style="text-align:center">
+                    @using (Html.BeginForm("ADD", "AddTeacher"))
+                    {
+                        <input type="submit" id="sub" value="Add To Database" class="btn btn-primary">
+                    }
+</div>
+                    </div>
+        }
+
+</div>
+    </div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $("#Deptlist").change(function () {
+            var name = $("#Deptlist :selected").text();
+            var man = { "name": name };
+            $.post("/AddTeacher/GetSem", man, function (data) {
+                var items = [];
+                items.push("<option value=" + 0 + ">" + "Select Semester" + "</option>"); //first item
+                for (var i = 0; i < data.length; i++) {
+                    items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                }                                         //all data from the team table push into array
+                $("#Sem").html(items.join(' '));
+            })
+
+
+            if ($("#Deptlist").val() == "0") {
+                $("#Sem").attr("disabled", "disabled");
+
+            }
+            else
+                $("#Sem").attr("disabled", false)
+
+        });
+
+        $("#Sem").change(function () {
+            var name = $("#Deptlist :selected").text();
+            var sem = $("#Sem :selected").text();
+            var man = { "Deptid": name ,"Sem": sem };
+            $.post("/AddTeacher/GetSection", man, function (data) {
+                var items = [];
+                items.push("<option value=" + 0 + ">" + "Select Section" + "</option>"); //first item
+                for (var i = 0; i < data.length; i++) {
+                    items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                }                                         //all data from the team table push into array
+                $("#sec").html(items.join(' '));
+            })
+
+            if ($("#Sem").val() == 0) {
+                $("#sec").attr("disabled", true);
+                $("#sub").attr("disabled", true);
+            }
+            else {
+
+                $("#sub").attr("disabled", false);
+                $("#sec").attr("disabled", false)
+
+
+            }
+
+        });
+
+        $("#sec").change(function () {
+
+            if ($("#sec").val() != null) {
+                $("#Tdept").attr("disabled", false);
+                $("#SDept").attr("disabled", false);
+                var name = $("#Sem :selected").text();
+                var man = { "sem": name };
+                $.post("/AddTeacher/GetSubjectDep", man, function (data) {
+                    var items = [];
+                    items.push("<option value=" + 0 + ">" + "Select Subject Department" + "</option>"); //first item
+                    for (var i = 0; i < data.length; i++) {
+                        items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                    }                                         //all data from the team table push into array
+                    $("#SDept").html(items.join(' '));
+                });
+                
+
+                if ($('#sec').val() != 0) {
+                    $("#Deptlist").attr("disabled", true);
+                    $("#Sem").attr("disabled", true);
+                    $("#sec").attr("disabled", true);
+                }
+            }
+            else {
+                $("#Tdept").attr("disabled", true);
+                $("#SDept").attr("disabled", true);
+
+            }
+        });
+
+        //On load
+
+        $("#Deptlist").ready(function () {
+            //var name = $("#Deptlist :selected").text();
+            if ($("#Deptlist").val() == "0") {
+                $("#Sem").attr("disabled", true);
+                $("#Tdept").attr("disabled", true);
+                $("#TID").attr("disabled", true);
+                $("#subcode").attr("disabled", true);
+                $("#sec").attr("disabled", true);
+                $("#SDept").attr("disabled", true);
+                $("#sub").attr("disabled", true);
+
+            }
+            else {
+                if ($("#Sem").val() != 0 && $("#sec").val() != 0) {
+                    $("#Sem").attr("disabled", true)
+                    $("#sec").attr("disabled", true)
+                    $("#Deptlist").attr("disabled", true)
+                    $("#SDept").attr("disabled", false)
+                    $("#Tdept").attr("disabled", false)
+                    
+                }
+                if($("#Tdept").val()!="0"&& $("#TID").val()==0)
+                {
+                    var name = $("#Tdept").val().toString();
+                    var man = { "Tdept": name };
+                    $.post("/AddTeacher/GetTeacher", man, function (data) {
+                        var items = [];
+                        items.push("<option value=" + 0 + ">" + "Select Teacher" + "</option>"); //first item
+                        for (var i = 0; i < data.length; i++) {
+                            items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                        }                                         //all data from the Teacher table push into array
+                        $("#TID").empty();
+                        $("#TID").html(items.join(' '));
+                    })
+                }
+                if ($("#SDept").val() != "0" && $("#subcode").val() == 0) {
+                    var name = $("#SDept").val().toString();
+                    var man = { "Subdept": $("#SDept").val().toString(), "sem": $("#Sem").val().toString() };
+                    $.post("/AddTeacher/GetSubject", man, function (data) {
+                        var items = [];
+                        items.push("<option value=" + 0 + ">" + "Select Subject" + "</option>"); //first item
+                        for (var i = 0; i < data.length; i++) {
+                            items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                        }                                         //all data from the Teacher table push into array
+                        $("#subcode").html(items.join(' '));
+                    })
+                }
+                if($("#subcode").val()!=0)
+                {
+                    $("#SUB").show();
+                    $("#SUB").empty();
+                    $("#SUB").add($("#subcode").val());
+                }
+                else
+                    if ($("#subcode").val() == 0)
+                    {
+                        $("#SUB").hide();
+                        
+                    }
+            }
+        });
+        $("#subcode").change(function () {
+            if ($("#subcode").val() != 0) {
+                $("#SUB").empty();
+                $("#SUB").add($("#subcode").val());
+                $("#SUB").show();
+            }
+            else
+                $("#SUB").hide();
+                });
+        //Teacher's Department Activation
+        $("#Tdept").change(function () {
+            var name = $("#Tdept").val().toString();
+            var man = { "Tdept": name };
+            $.post("/AddTeacher/GetTeacher", man, function (data) {
+                var items = [];
+                items.push("<option value=" + 0 + ">" + "Select Teacher" + "</option>"); //first item
+                for (var i = 0; i < data.length; i++) {
+                    items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                }                                         //all data from the Teacher table push into array
+                $("#TID").html(items.join(' '));
+            })
+            if ($("#Tdept").val() == "0") {
+                $("#TID").attr("disabled", "disabled");
+
+            }
+            else
+                $("#TID").attr("disabled", false)
+
+        });
+        
+       
+        $("#SDept").change(function () {
+            var name = $("#SDept").val().toString();
+            var man = { "Subdept": $("#SDept").val().toString(), "sem": $("#Sem").val().toString() };
+            $.post("/AddTeacher/GetSubject", man, function (data) {
+                var items = [];
+                items.push("<option value=" + 0 + ">" + "Select Subject" + "</option>"); //first item
+                for (var i = 0; i < data.length; i++) {
+                    items.push("<option value=" + data[i].Value + ">" + data[i].Text + "</option>");
+                }                                         //all data from the Teacher table push into array
+                $("#subcode").html(items.join(' '));
+            })
+            if ($("#SDept").val() == "0") {
+                $("#subcode").attr("disabled", true);
+
+            }
+            else
+                $("#subcode").attr("disabled", false)
+
+        });
+
+        $("#sub").click(function () {
+            $("#Sem").attr("disabled", false);
+            $("#Tdept").attr("disabled", false);
+            $("#SDept").attr("disabled", false);
+            $("#TID").attr("disabled", false);
+            $("#subcode").attr("disabled", false);
+            $("#sec").attr("disabled", false);
+            $("#Deptlist").attr("disabled", false);
+        });
+
+    });
+
+
+</script>
+<style>
+    button a{
+        color:white!important;
+    }
+</style>
+
+

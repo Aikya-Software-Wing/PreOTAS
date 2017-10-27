@@ -1,0 +1,46 @@
+﻿@model IEnumerable<PreOTAS.Models.StudentError>
+
+@{
+    ViewBag.Title = "StudentErrors";
+}
+
+<h2>Student Errors</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Usn)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Usn)
+            </td>
+            <td>
+                <table class="table">
+                    <tr>
+                        <th>
+                            Attribute Name
+                        </th>
+                        <th>Error Message</th>
+                    </tr>
+
+                    @foreach (var item1 in item.Errors)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item1.AttributeName)
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item1.ErrorMessage)</td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+    }
+
+</table>

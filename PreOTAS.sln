@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PreOTAS", "PreOTAS\PreOTAS.csproj", "{499748E8-A7BF-450F-909E-6BA481D9F22E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{546BA954-240E-4D9D-A7BE-E392E5D25748}"
+	ProjectSection(SolutionItems) = preProject
+		Database.sql = Database.sql
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{499748E8-A7BF-450F-909E-6BA481D9F22E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{499748E8-A7BF-450F-909E-6BA481D9F22E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{499748E8-A7BF-450F-909E-6BA481D9F22E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{499748E8-A7BF-450F-909E-6BA481D9F22E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CCED8922-3E7E-49BB-846D-28CD5B6ACB16}
+	EndGlobalSection
+EndGlobal

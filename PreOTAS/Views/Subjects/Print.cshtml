@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PreOTAS.Models.Subject>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Subjects</title>
+</head>
+<body onload="window.print()">
+    <h1>OTAS</h1>
+    <hr />
+    <table border="1">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SubName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Sem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Elective)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DEPT.DeptName)
+            </th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Elective)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DEPT.DeptName)
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>
