@@ -12,8 +12,19 @@ namespace PreOTAS.Controllers
         // GET: Template
         public ActionResult GetTemplateForStudent()
         {
-            string filePath = Server.MapPath("~/Templates/Student.xlsx");
-            FileInfo file = new FileInfo(filePath);
+            FileDownload(new FileInfo(Server.MapPath("~/Templates/Student.xlsx")));
+            return View();
+        }
+
+        public ActionResult GetTemplateForElective()
+        {
+            FileDownload(new FileInfo(Server.MapPath("~/Templates/Electives.xlsx")));
+            return View();
+        }
+
+        #region Helpers
+        private void FileDownload(FileInfo file)
+        {
             Response.Clear();
             Response.ClearHeaders();
             Response.ClearContent();
@@ -23,7 +34,7 @@ namespace PreOTAS.Controllers
             Response.Flush();
             Response.TransmitFile(file.FullName);
             Response.End();
-            return View();
         }
+        #endregion
     }
 }

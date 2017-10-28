@@ -478,6 +478,7 @@
     <Content Include="Views\AddTeacher\AuthorizeSubComb.cshtml" />
     <Content Include="Views\AddTeacher\Authorize.cshtml" />
     <Content Include="Templates\Student.xlsx" />
+    <Content Include="Templates\Electives.xlsx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
