@@ -193,6 +193,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AddTeacherController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewElectivesTablesController.cs" />
@@ -341,9 +342,6 @@
     <Compile Include="Models\Suggestion.cs">
       <DependentUpon>RNSITModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>RNSITModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\Teacher.cs">
       <DependentUpon>RNSITModel.tt</DependentUpon>
     </Compile>
@@ -476,6 +474,8 @@
     <Content Include="Views\NewElectivesTables\Authorize.cshtml" />
     <Content Include="Views\AddTeacher\AuthorizeSubComb.cshtml" />
     <Content Include="Views\AddTeacher\Authorize.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Generate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

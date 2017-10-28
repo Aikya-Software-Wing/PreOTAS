@@ -198,6 +198,7 @@ namespace PreOTAS.Controllers
                 }
                 db.STUDENTs.Add(sTUDENT);
                 db.SaveChanges();
+                TempData["StudentUSN"] = sTUDENT.USN;
                 return RedirectToAction("Index");
             }
 

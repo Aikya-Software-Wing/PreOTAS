@@ -41,7 +41,6 @@ namespace PreOTAS.Models
         public virtual DbSet<SubComb> SubCombs { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
         public virtual DbSet<Suggestion> Suggestions { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Valid> ValidS { get; set; }
         public virtual DbSet<GivenNotGiven> GivenNotGivens { get; set; }

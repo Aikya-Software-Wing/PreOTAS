@@ -40,6 +40,7 @@ namespace PreOTAS.Models
         public Nullable<decimal> PUC { get; set; }
         public Nullable<int> Batch { get; set; }
         public Nullable<bool> isVallid { get; set; }
+        public string Password { get; set; }
     
         public virtual DEPT DEPT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="24aa907fd38948edac531d51a5386ca4" Name="Diagram1">
+      <Diagram DiagramId="24aa907fd38948edac531d51a5386ca4" Name="Diagram1" ZoomLevel="69">
         <EntityTypeShape EntityType="RNSITModel.C__MigrationHistory" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="RNSITModel.ABCD" Width="1.5" PointX="7.75" PointY="3.75" />
         <EntityTypeShape EntityType="RNSITModel.Admin" Width="1.5" PointX="3" PointY="13.875" />
@@ -19,7 +19,6 @@
         <EntityTypeShape EntityType="RNSITModel.SubComb" Width="1.5" PointX="5.25" PointY="18.5" />
         <EntityTypeShape EntityType="RNSITModel.Subject" Width="1.5" PointX="3" PointY="16.625" />
         <EntityTypeShape EntityType="RNSITModel.Suggestion" Width="1.5" PointX="5.25" PointY="15.375" />
-        <EntityTypeShape EntityType="RNSITModel.sysdiagram" Width="1.5" PointX="9.75" PointY="0.75" />
         <EntityTypeShape EntityType="RNSITModel.Teacher" Width="1.5" PointX="3" PointY="24.625" />
         <EntityTypeShape EntityType="RNSITModel.Valid" Width="1.5" PointX="5.25" PointY="8" />
         <EntityTypeShape EntityType="RNSITModel.GivenNotGiven" Width="1.5" PointX="9.75" PointY="3.75" />

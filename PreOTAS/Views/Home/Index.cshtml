@@ -5,4 +5,8 @@
 <div class="jumbotron">
     <h1>OTAS</h1>
     <p class="lead">Online Teacher's Appraisal System</p>
+    @if (User.IsInRole("Admin"))
+    {
+        <p>@Html.ActionLink("Click here to Generate Passwords", "Generate", "Admin", null, new { @class = "btn btn-info" })</p>
+    }
 </div>
