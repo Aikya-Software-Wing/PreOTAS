@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.Entity;
 using PreOTAS.Models;
 using System.Web.Security;
+using EntityFrameworkPaginate;
 
 namespace PreOTAS.Controllers
 {
@@ -30,7 +31,7 @@ namespace PreOTAS.Controllers
                         db.SaveChanges();
                     }
                 }
-                return RedirectToAction("Index","Admin");
+                return RedirectToAction("FilterStudent","Admin");
             }
             else
                 return RedirectToAction("Index", "Home");
@@ -45,6 +46,29 @@ namespace PreOTAS.Controllers
             {
                 return RedirectToAction("Index", "Home");
             }
+        }
+        public Page<STUDENT> FilterStudent(int PageSize, int CurrentPage, string SearchText, int SortBy, string Department)
+        {
+            /* 
+             PageSize - no. of records
+             CurrentPage - Page no.
+             SearchText - Student Name only
+             SortBy - drop down for section (value returned=1) sem(2) USN(3)
+             Department - dropdown department name. (value returned should be dept name)
+             */
+            Page<STUDENT> students;
+            var filters = new Filters<STUDENT>();
+            filters.Add(!string.IsNullOrEmpty(SearchText), x => x.NAME.Contains(SearchText));
+            filters.Add(!string.IsNullOrEmpty(SearchText), x => x.DEPT.DeptName.Equals(Department));
+            var sorts = new Sorts<STUDENT>();
+            sorts.Add(SortBy == 1, x => x.Section,true);
+            sorts.Add(SortBy == 2, x => x.Sem,true);
+            sorts.Add(SortBy == 3, x => x.USN, true);
+            using (var Context = new RNSITEntities())
+            {
+                students = Context.STUDENTs.Paginate(CurrentPage, PageSize, sorts, filters);
+            }
+                return students;
         }
     }
 }
