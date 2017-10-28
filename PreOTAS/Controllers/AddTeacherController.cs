@@ -7,7 +7,8 @@ using System.Web.Mvc;
 
 namespace OTASNewLoginTrial.Controllers
 {
-    
+    [Authorize]
+
     public class AddTeacherController : Controller
     {
         //

@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace PreOTAS.Controllers
 {
+    [Authorize]
     public class TemplateController : Controller
     {
         // GET: Template

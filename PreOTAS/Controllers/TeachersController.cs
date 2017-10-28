@@ -10,6 +10,7 @@ using PreOTAS.Models;
 
 namespace PreOTAS.Controllers
 {
+    [Authorize]
     public class TeachersController : Controller
     {
         private RNSITEntities db = new RNSITEntities();

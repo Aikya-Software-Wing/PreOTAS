@@ -14,6 +14,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace PreOTAS.Controllers
 {
+    [Authorize]
     public class NewElectivesTablesController : Controller
     {
         private RNSITEntities db = new RNSITEntities();
