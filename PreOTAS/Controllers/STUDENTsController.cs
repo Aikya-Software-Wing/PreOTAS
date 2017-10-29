@@ -15,6 +15,7 @@ using System.Data.Entity.Infrastructure;
 
 namespace PreOTAS.Controllers
 {
+    [Authorize]
     public class STUDENTsController : Controller
     {
         private RNSITEntities db = new RNSITEntities();

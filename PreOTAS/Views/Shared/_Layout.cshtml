@@ -91,6 +91,17 @@
                                 <li>@Html.ActionLink("Subject Combinations", "PrintSubjectCombinations", "AddTeacher")</li>
                             </ul>
                         </li>
+
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                Templates
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>@Html.ActionLink("Student", "GetTemplateForStudent", "Template")</li>
+                                <li>@Html.ActionLink("Elective", "GetTemplateForElective", "Template")</li>
+                            </ul>
+                        </li>
                     </ul>
                 }
                 @Html.Partial("_LoginPartial")
